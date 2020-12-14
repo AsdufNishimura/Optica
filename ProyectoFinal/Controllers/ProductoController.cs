@@ -21,6 +21,33 @@ namespace ProyectoFinal.Controllers
             return View(db.Productos.ToList());
         }
 
+        public ActionResult Index(string SearchString)
+        {
+            var productos = from p in db.Productos select p;
+            var anteojos = from a in db.Anteojos select a;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                if (SearchString.Equals("Anteojos"))
+                {
+                    productos = db.Productos.Join(db.Anteojos,
+                        producto => producto.ProductoId,
+                        anteojo => anteojo.ProductoId,
+                        (producto, anteojo) => new { Producto = producto, Anteojo = anteojo })
+                        .Where(pa => pa.Producto.ProductoId == pa.Anteojo.ProductoId)
+                        .Select(pa => pa.Producto);
+                }
+                else
+                {
+                    productos = db.Productos;
+                }
+                
+            }
+
+            return View(productos.ToList());
+        }
+    
+
         // GET: Producto/Details/5
         public ActionResult Details(int? id)
         {

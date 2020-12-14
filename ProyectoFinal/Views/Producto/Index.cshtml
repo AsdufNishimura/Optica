@@ -9,6 +9,24 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+@{
+    var listItems = new List<SelectListItem>
+    {
+          new SelectListItem { Text = "Anteojos", Value="Anteojos" },
+          new SelectListItem { Text = "Todos", Value="Todos" }
+    };
+}
+
+
+<form asp-controller="Producto" asp-action="Index" method="get">
+    <p>
+        Tipo: @Html.DropDownList("SearchString", new SelectList(listItems, "SearchString", "SearchString"))
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <tr>
         <th>
@@ -20,20 +38,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrecioUnitario)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductoId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioUnitario)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductoId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductoId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductoId })
+            </td>
+        </tr>
+    }
 
 </table>
