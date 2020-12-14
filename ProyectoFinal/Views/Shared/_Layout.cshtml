@@ -12,20 +12,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
         <a class="navbar-brand" href="#">Optica</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">@Html.ActionLink("Inicio", "Index", "Home")</a>                    
-                    
+                <li class="nav-item nav-link">
+                    @Html.ActionLink("Inicio", "Index", "Home")                   
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">@Html.ActionLink("Acerca de", "About", "Home")</a>
+                <li class="nav-item nav-link">
+                    @Html.ActionLink("Acerca de", "About", "Home")
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">@Html.ActionLink("Contacto", "Contact", "Home")</a>
+                <li class="nav-item nav-link">
+                    @Html.ActionLink("Contacto", "Contact", "Home")
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,8 +40,8 @@
                         <div class="dropdown-item">@Html.ActionLink("Usuarios", "Index", "Usuario")</div>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">@Html.ActionLink("Ventas", "Index", "Venta")</a>
+                <li class="nav-item nav-link">
+                    @Html.ActionLink("Ventas", "Index", "Venta")
                 </li>
             </ul>
         </div>

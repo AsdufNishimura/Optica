@@ -19,6 +19,32 @@ namespace ProyectoFinal.Controllers
         public ActionResult Index()
         {
             var ventas = db.Ventas.Include(v => v.Cliente).Include(v => v.Usuario);
+
+            
+            //    var clientes = db.Clientes.ToList();
+            //    var clienteItems = new List<SelectListItem>();
+            //    foreach (var item in clientes)
+            //    {
+            //        clienteItems.Add(new SelectListItem
+            //        {
+            //            Text = item.NombreCompleto,
+            //            Value = item.ClienteId.ToString()
+            //        });
+            //    }
+            //    ViewBag.clienteItems = clienteItems;
+
+            //var usuarios = db.Usuarios.ToList();
+            //var usuarioItems = new List<SelectListItem>();
+            //foreach (var item in usuarios)
+            //{
+            //    usuarioItems.Add(new SelectListItem
+            //    {
+            //        Text = item.NombreUsuario,
+            //        Value = item.UsuarioId.ToString()
+            //    });
+            //}
+            //ViewBag.usuarioItems = usuarioItems;
+
             return View(ventas.ToList());
         }
 
@@ -40,7 +66,15 @@ namespace ProyectoFinal.Controllers
         // GET: Venta/Create
         public ActionResult Create()
         {
-            ViewBag.ClienteId = new SelectList(db.Clientes, "ClienteId", "Nombre");
+            //var model = new ProyectoFinal.ViewModels.VentaViewModel
+            //{
+            //    Venta = new Venta(),
+            //    Clientes = new SelectList(this.UnitOfWork.RegionRepository.Get(), "Id", "Name")
+            //};
+            var clientes = new List<Cliente>();
+            clientes = db.Clientes.ToList();
+
+            ViewBag.ClienteId = new SelectList(clientes, "ClienteId", "NombreCompleto");
             ViewBag.UsuarioId = new SelectList(db.Usuarios, "UsuarioId", "NombreUsuario");
             return View();
         }
